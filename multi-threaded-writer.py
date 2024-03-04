@@ -41,9 +41,9 @@ executions = 300
 workers = 10
 
 
-neo4j_host = "neo4j://localhost:7687"
+neo4j_host = "neo4j://hostname:7687"
 
-neo4j_pass = "password"
+neo4j_pass = "yourPassword"
 
 #neo4j_host = os.getenv("NEO4J_BOLT_URL")
 #neo4j_pass = os.getenv("NEO4J_PASSWORD")
@@ -74,17 +74,17 @@ def run_test(driver, iteration):
     create_node(driver, f"testing-{iteration}")
     time_spent = time.time() - init_time
     logger.info(f"Created testing-{iteration}, Time spent: {time_spent:.2f}")
-    # Random sleep
+    # Random sleep between executions
     time.sleep(random.uniform(0.1, 2.0))
 
 
 def main():
     
-    #Driver Debug
+    #Uncomment the next two lines for Driver Debug logs
     #from neo4j.debug import watch
     #watch("neo4j", out=sys.stdout)
     
-    #display the driver version
+    #Uncomment the next two lines to display the Neo4j driver version
     #from neo4j import __version__ as neo4j_version
     #print(f"Neo4j Python Driver Version: {neo4j_version}")
 
